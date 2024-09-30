@@ -14,11 +14,11 @@ int main()
     printf("Il doppio è: %f", quadrato);
     if(A==quadrato)
     {
-        printf("Il valore di A: %f corisponde al quadato %f", A,B);
+        printf("Il valore di A: %f corisponde al quadato: %f", A,B);
     }
     else
     {
         printf("Il valore di A: %f non corisponde al quadato %f", A,B");
-    } 
+    }
     return 0;
 }
