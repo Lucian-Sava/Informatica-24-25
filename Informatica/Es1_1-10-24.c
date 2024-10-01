@@ -15,4 +15,20 @@ int main()
         printf("Il numero %d non e divisibile per 3 sia per 5.\n", A);
     }
     return 0;
-}    
+}
+/* if (a % 3 == 0)
+{
+    if (a % 5 == 0)
+    {
+    printf("%d è divisibile sia per 3 sia per 5",a);
+    }
+    else
+    {
+    printf("5d è divisibile per 3 ma non per 5",a);
+    }
+}
+else
+{
+    printf("%d non è divisibile per 3",a);
+}
+*/
