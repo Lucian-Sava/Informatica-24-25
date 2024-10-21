@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Risponditore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chiedi alla AI</h1>
+    <input type="text" id="userInput" placeholder="Scrivi la tua domanda qui">
+    <button onclick="getResponse()">Invia</button>
+    <div id="response"></div>
+
+    <script>
+        function getResponse() {
+            const userInput = document.getElementById('userInput').value;
+            let response = '';
+
+            if (userInput.toLowerCase().includes('ciao')) {
+                response = 'Ciao! Come posso aiutarti oggi?';
+            } else if (userInput.toLowerCase().includes('come stai')) {
+                response = 'Sto bene, grazie! E tu?';
+            } else {
+                response = 'Mi dispiace, non ho capito la tua domanda.';
+            }
+
+            document.getElementById('response').innerText = response;
+        }
+    </script>
+</body>
+</html>

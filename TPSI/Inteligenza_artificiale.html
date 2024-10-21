@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riconoscimento Testo con IA</title>
+</head>
+<body>
+    <h1>Carica un'immagine per riconoscere il testo</h1>
+    <input type="file" id="imageInput">
+    <div id="result"></div>
+
+    <!-- Includi la libreria Tesseract.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    Tesseract.recognize(
+                        e.target.result,
+                        'eng',
+                        {
+                            logger: m => console.log(m)
+                        }
+                    ).then(({ data: { text } }) => {
+                        document.getElementById('result').innerText = text;
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
