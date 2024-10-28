@@ -64,4 +64,9 @@ int main()
     }
     else
         printf("\nIl valore inserito non rispetta la richiesta!");
-}
+
+                                                    }
+                                                    printf("\nil numero decimale %d in binari vale %d%d%d%d%d%d", num, n5, n4, n3, n2, n1, n0);
+    }
+    else
+        printf("\nIl valore inserito non rispetta la richiesta!");
