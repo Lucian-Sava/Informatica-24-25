@@ -48,3 +48,22 @@ una somma di denaro calcolare il controvalore. */
 
         return 0;
     }
+
+
+
+    /*
+        (PER RISPARMIARE TEMPO E PER "NON AGGIUNGERE VOID")
+    if (scelta == 1) {
+        printf("Inserisci l'importo in Dollari: ");
+        scanf("%f", &valore);
+        conversione = valore / tassoCambio;
+        printf("L'importo in Euro è: %.2f\n", conversione);
+    } else if (scelta == 2) {
+        printf("Inserisci l'importo in Euro: ");
+        scanf("%f", &valore);
+        conversione = valore * tassoCambio;
+        printf("L'importo in Dollari è: %.2f\n", conversione);
+    } else {
+        printf("Scelta non valida.\n");
+    }
+ */
