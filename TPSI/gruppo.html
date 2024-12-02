@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Progresso dell'elemento</h1>
+
+        <label for="file">Downloading del progresso:</label> 
+
+        <!--Crea un'etichetta (<label>) per descrivere l'elemento di progresso. L'attributo (for="file") collega l'etichetta all'elemento <progress> con (id="file"),facilitando l'associazione tra il testo e l'indicatore.-->
+        <progress id="file" value="32" max="100"> 32% </progress>
+        <!--<progress>: (Questo elemento rappresenta una barra di avanzamento.)
+
+        id="file": Assegna un identificatore unico all'elemento, che può essere usato per fare riferimento ad esso, per esempio, con JavaScript.
+
+        value="32": (Indica lo stato di avanzamento attuale, in questo caso al 32%.)
+
+        max="100": (Specifica il valore massimo della barra (100), così la barra risulta completata quando value è uguale a max.)
+
+        32%: Il testo tra i tag <progress> viene mostrato come fallback in caso di browser che non supportano l'elemento <progress>.-->
+    </body>
+</html>

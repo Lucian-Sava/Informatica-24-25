@@ -5,15 +5,20 @@
   {
     int Num, Conta, fibA, fibB, fibC;
 
-    printf("Inserisci un Numro: ");
-    scanf("%d", &Num);
-
     fibA = 1;
     fibB = 1;
     printf(" %d", fibA);
     printf(" %d", fibB);
 
+
+    while(Num<3)
+    {
+      printf("inserisci un numero maggiore di 3: \t");
+      scanf("%d", &Num);
+    }
+
     Conta = 3;
+
 
 
     while(Conta < Num)
