@@ -1,6 +1,8 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "Es3-20241114.C": "cpp"
+        "Es3-20241114.C": "cpp",
+        "ES2_12_12_2024.C": "cpp",
+        "es10_19-12_2024.C": "cpp"
     }
 }

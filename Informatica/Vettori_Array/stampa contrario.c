@@ -1,0 +1,6 @@
+/*
+INIZIALIZZATO L'ARRAY CON MULTIPLO DI 2
+STAMPARLO AL CONTRARIO
+*/
+#include <stdio.h>
+#define MAX 10

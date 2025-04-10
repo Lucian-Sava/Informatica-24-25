@@ -4,6 +4,12 @@ int main()
 {
     int C = 0;
 
+    for(int i==0; i<5; i++)
+    {
+        for(int j==0; j
+
+    
+
     for(int i = 1; C < 100; i += 2){
         printf("%d\t",i);
         C++;
