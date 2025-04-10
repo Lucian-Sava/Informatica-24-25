@@ -7,14 +7,49 @@ il loro numero
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "liberia.h"
-#include "liberia.c"
 #define DIM 6
 
+void caricaVettore(int vett[], int dim)
+{
+    int i=0;
+    printf("Inserisci un valoe: ");
+
+    for(i=0; i<dim; i++)
+    {
+        scanf("%d\n", &vett[i]);
+    }
+}
+int sommaVettore(int vett[], int dim, int *_cnt)
+{
+    int i=0, somma=0;
+  while(vett[i] != 0 && i<dim)
+  {
+
+    somma+=vett[i];
+    i++;
+    *_cnt++;
+  }
+  return somma;
+}
+void StampaVettore(int vett[], int dim)
+{
+    int i=0;
+    printf("il vettore e\' composto da: ");
+    for(i=0; i<dim; i++)
+    {
+        printf("%d\t", vett[i]);
+    }
+}
 int main()
 {
     int vett[DIM]={0};
+    int sommaVett=0;
+    int cnt=0;
 
-    // carichiamo il vettore
-    void caricaVett(int vett[DIM], int dim)
+    //carichiamo il vettore
+    caricaVettore(vett, DIM);
+    sommaVett=sommaVettore(vett, DIM, cnt);
+    StampaVettore(vett, DIM);
+    printf("I %d elementi sommati valgono %d", cnt, sommaVett);
+
 }
