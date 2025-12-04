@@ -1,0 +1,37 @@
+/*Rendere la pagina bella */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 50px;
+}
+h1 {
+    color: #4CAF50;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+{
+    width: 200px;
+    margin-botton: 10px;
+}
+#risultato {
+    font-size: 20px;
+    margin-top: 20px;
+}
+#tentativi {
+    font-size: 16px;
+    color: #555;
+}

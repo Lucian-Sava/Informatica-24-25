@@ -8,13 +8,59 @@
                 var data = new Date();
                 var ora = data.toLocaleTimeString();
                 alert(ora);
+                document.body.innerHTML += "<p>Ora attuale: </p>"; //+= serve a trattenere il contenuto precedente e anche il +
+                document.body.innerHTML += ora;
+            }
+            function mostraData()
+            {
+                var data = new Date();
+                var giorno = data.getDate();
+                var mese = data.getMonth() + 1; // I mesi partono da 0
+                var anno = data.getFullYear();
+                alert(giorno + "/" + mese + "/" + anno);
+                document.body.innerHTML += "<p>Data attuale: </p>"; //+= serve a trattenere il contenuto precedente e anche il +
+                document.body.innerHTML += giorno + "/" + mese + "/" + anno;
+            }
+            function calendario()
+            {
+                var data = new Date();
+                var giorno = data.getDate();
+                var mese = data.getMonth() + 1; // I mesi partono da 0
+                var anno = data.getFullYear();
+                var giorniNelMese = new Date(anno, mese, 0).getDate(); // Ottieni il numero di giorni nel mese corrente
+
+                var calendario = "Calendario del mese " + mese + "/" + anno + ":\n";
+                for (var i = 1; i <= giorniNelMese; i++) {
+                    calendario += i + "\n";
+                }
+                alert(calendario);
+                document.body.innerHTML += "<p>Calendario del mese " + mese + "</p><p>" + anno + ":</p>"; //+= serve a trattenere il contenuto precedente e anche il +
+                for (var i = 1; i <= giorniNelMese; i++) {
+                    document.body.innerHTML += i + "<br>";
+                }
+            }
+                
+            function login()
+            {
+                var username = prompt("Inserisci il tuo username:");
+                var password = prompt("Inserisci la tua password:");
+
+                // Esempio di validazione (in un'app reale, non fare così!)
+                if (username === "admin" && password === "password") {
+                    alert("Login effettuato con successo!");
+                } else {
+                    alert("Username o password errati.");
+                }
             }
 
         </script>
     </head>
     <body>
         <form>
-            <input type="button" value="Cliccami" onclick="mostraOra()">
+            <input type="button" value="Mostra Ora" onclick="mostraOra()">
+            <input type="button" value="Mostra Data" onclick="mostraData()">
+            <input type="button" value="Mostra Calendario" onclick="calendario()">
+            <input type="button" value="Login" onclick="login()">
         </form>
     </body>
 </html>

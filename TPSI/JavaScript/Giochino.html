@@ -1,0 +1,63 @@
+<!-- INDOVINA IL NUMERO -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <!-- Colegamento con CSS -->
+    <link rel="stylesheet" href="Giochino.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+    </style>
+    <title>INDOVINA IL NUMERO</title>
+    <script>
+        function indovina()
+        {
+            const input1 = document.getElementById("num1");
+            const numeroCasuale = Math.floor(Math.random() * 105) + 1;
+            const valore1 = parseFloat(input1.value) || 0;
+
+            if(valore1 == 104)
+            {
+                alert("Hai indovinato!");
+                document.body.style.backgroundColor = 'green';
+                const img = document.createElement("img");
+                img.src = "snoopy-esnupi.gif";
+                img.alt = "Hai vinto!";
+                img.style.width = "200px";
+                document.body.appendChild(img);
+
+            }
+            if(valore1 != 104)
+            {
+                alert("Ritenta, il numero era: " + numeroCasuale);
+                document.body.style.backgroundColor = 'red';
+                const img = document.createElement("img");
+                img.src = "manhphongg.webp";
+                img.alt = "Hai vinto!";
+                img.style.width = "200px";
+                document.body.appendChild(img);
+            }
+        };
+        function Reset()
+        {
+
+            document.getElementById("num1").value = "";
+            document.body.style.backgroundColor = 'white';
+            const imgs = document.querySelectorAll("img");
+            imgs.forEach(img => img.remove());
+        }
+    </script>
+
+</head>
+<boby>
+    <h2> INSERISCI UN NUMERO </h2>
+    <input id="num1" type="number" placeholder="Numero da 1 a 100">
+    <input type="button" value="INDOVINA" onclick="indovina()">
+    <input type="button" value="RESET" onclick="Reset()">
+
+</boby>
+</html>

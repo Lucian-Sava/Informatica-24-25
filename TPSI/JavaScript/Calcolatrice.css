@@ -1,0 +1,121 @@
+/* Craezione di uno stile di base per la calcolatrice */
+.calcolatrice {
+    width: 300px;
+    margin: 50px auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+}
+.calcolatrice-display {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: #222;
+    color: #fff;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
+}
+.calcolatrice-tasti {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+.calcolatrice-tasto {
+    height: 50px;
+    border: none;
+    background-color: #e0e0e0;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.calcolatrice-tasto:hover {
+    background-color: #d0d0d0;
+}
+.calcolatrice-tasto-operatore {
+    background-color: #ff9500;
+    color: #fff;
+}
+.calcolatrice-tasto-operatore:hover {
+    background-color: #e08500;
+}
+.calcolatrice-tasto-uguale {
+    background-color: #34c759;
+    color: #fff;
+    grid-column: span 2;
+}
+.calcolatrice-tasto-uguale:hover {
+    background-color: #28a745;
+}
+.calcolatrice-tasto-cancella {
+    background-color: #ff3b30;
+    color: #fff;
+}
+.calcolatrice-tasto-cancella:hover {
+    background-color: #e02b20;
+}
+.calcolatrice-tasto-zero {
+    grid-column: span 2;
+}
+.calcolatrice-tasto:active {
+    transform: scale(0.95);
+}
+.calcolatrice-tasto:focus {
+    outline: none;
+    box-shadow: 0 0 5px #007aff;
+}
+.calcolatrice-tasto-disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+.calcolatrice-tasto-disabled:hover {
+    background-color: #cccccc;
+}
+.calcolatrice-tasto-disabled:active {
+    transform: none;
+}
+.calcolatrice-tasto-disabled:focus {
+    box-shadow: none;
+}
+/* Stile per il display quando è vuoto */
+.calcolatrice-display:empty::before {
+    content: "0";
+    color: #888;
+}
+/* Stile per i tasti speciali */
+.calcolatrice-tasto-speciale {
+    background-color: #007aff;
+    color: #fff;
+}
+.calcolatrice-tasto-speciale:hover {
+    background-color: #005bb5;
+}
+.calcolatrice-tasto-speciale:active {
+    background-color: #004494;
+}
+.calcolatrice-tasto-speciale:focus {
+    box-shadow: 0 0 5px #007aff;
+}
+/* Stile per il layout responsive */
+@media (max-width: 400px) {
+    .calcolatrice {
+        width: 100%;
+        margin: 20px;
+    }
+    .calcolatrice-display {
+        font-size: 20px;
+        height: 40px;
+    }
+    .calcolatrice-tasto {
+        height: 40px;
+        font-size: 16px;
+    }
+}
+/* Fine dello stile della calcolatrice */

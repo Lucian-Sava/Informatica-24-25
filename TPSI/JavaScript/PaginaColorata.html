@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pagina Colorata</title>
+        <script>
+            function cambiaColore(scelta)
+            {
+                //Il cursore passa nella figura colorata per cambiare il colore di sfondo
+                document.body.style.backgroundColor = scelta;
+            }
+        </script>
+        <style>
+            body {
+                text-align: center;
+                font-family: Arial, sans-serif;
+            }
+            div {
+                
+                margin: 20px;
+                border: 3px solid black;
+                cursor: pointer;
+            }
+        </style>
+
+        <body>
+            <h1>PAGINA COLORATA</h1>
+            <p>Passa il cursore sulle figure colorate per cambiare il colore di sfondo della pagina</p>
+            <div href="Triangolo61125.png"
+                style="width:100px; height:100px; background-color:red; display:inline-block;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"
+                onmouseover="cambiaColore('red');">
+            </div>
+            <div href="Cerchio61125.png"
+                style="width:100px; height:100px; background-color:green; display:inline-block;
+                border-radius:50%;"
+                onmouseover="cambiaColore('green');">
+            </div>
+            <div href="Quadrato61125.png"
+                style="width:100px; height:100px; background-color:blue; display:inline-block;"
+                onmouseover="cambiaColore('blue');">
+            </div>
+        </body>
+    </head>
+</html>

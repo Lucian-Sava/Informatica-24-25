@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Per compatibilità con IE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calcolatrice</title>
+    <link rel="stylesheet" href="Calcolatrice.css">
+  <style>
+    .calcolatrice {
+        width: 300px;
+        margin: 50px auto;
+        border: 2px solid #333;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        font-family: 'Arial', sans-serif;
+    }
+    .calcolatrice-display {
+        width: 100%;
+        height: 50px;
+        border: none;
+        background-color: #222;
+        color: #fff;
+        font-size: 24px;
+        text-align: right;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 10px 10px 0 0;
+    }
+    .calcolatrice-tasti {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        padding: 10px;
+    }
+    .calcolatrice-tasto {
+        height: 50px;
+        border: none;
+        background-color: #e0e0e0;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .calcolatrice-tasto:hover {
+        background-color: #d0d0d0;
+    }
+    .calcolatrice-tasto-operatore {
+        background-color: #ff9500;
+        color: #fff;
+    }
+    .calcolatrice-tasto-operatore:hover {
+        background-color: #e08500;
+    }
+    .calcolatrice-tasto-uguale {
+        background-color: #34c759;
+        color: #fff;
+        grid-column: span 2;
+    }
+    .calcolatrice-tasto-uguale:hover {
+        background-color: #28a745;
+    }
+    .calcolatrice-tasto-cancella {
+        background-color: #ff3b30;
+        color: #fff;
+    }
+    .calcolatrice-tasto-cancella:hover {
+        background-color: #e02b20;
+    }
+    .calcolatrice-tasto-zero {
+        grid-column: span 2;
+    }
+    .calcolatrice-tasto:active {
+        transform: scale(0.95);
+    }
+    .calcolatrice-tasto:focus {
+        outline: none;
+        box-shadow: 0 0 5px #007aff;
+    }
+    .calcolatrice-tasto-disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+    }
+    .calcolatrice-tasto-disabled:hover {
+        background-color: #cccccc;
+    }
+    .calcolatrice-tasto-disabled:active {
+        transform: none;
+    }
+    .calcolatrice-tasto-disabled:focus {
+        box-shadow: none;
+    }
+    .calcolatrice-display:empty::before {
+        content: "0";
+        color: #888;
+    }
+    .calcolatrice-tasto-speciale {
+        background-color: #007aff;
+        color: #fff;
+    }
+    .calcolatrice-tasto-speciale:hover {
+        background-color: #005bb5;
+    }
+    .calcolatrice-tasto-speciale:active {
+        background-color: #004494;
+    }
+    .calcolatrice-tasto-speciale:focus {
+        box-shadow: 0 0 5px #007aff;
+    }
+    @media (max-width: 400px) {
+        .calcolatrice {
+            width: 100%;
+            margin: 20px;
+        }
+        .calcolatrice-display {
+            font-size: 20px;
+            height: 40px;
+        }
+        .calcolatrice-tasto {
+            height: 40px;
+            font-size: 16px;
+        }
+    }
+  </style>
+
+  <script>
+    function inserisci(val) {
+      const s = document.getElementById('schermo');
+      s.value += val;
+    }
+
+    function calcola() {
+      const s = document.getElementById('schermo');
+      let expr = s.value;
+      try {
+        // Gestione semplice del simbolo percentuale: "50%" -> "50/100"
+        expr = expr.replace(/%/g, '/100');
+        // ATTENZIONE: eval esegue codice JavaScript, quindi va usato con cautela
+        const risultato = eval(expr);
+        s.value = risultato;
+      } catch (e) {
+        s.value = 'Errore';
+      }
+    }
+
+    function cancellaTutto() {
+      document.getElementById('schermo').value = '';
+    }
+
+    function backspace() {
+      const s = document.getElementById('schermo');
+      s.value = s.value.slice(0, -1);
+    }
+
+    // Supporto tastiera
+    document.addEventListener('keydown', function(e) {
+      const allowed = '0123456789+-*/().%';
+      if (allowed.includes(e.key)) {
+        e.preventDefault();
+        inserisci(e.key);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        calcola();
+      } else if (e.key === 'Backspace') {
+        e.preventDefault();
+        backspace();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        cancellaTutto();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="calcolatrice" role="application" aria-label="Calcolatrice">
+    <input
+      type="text"
+      id="schermo"
+      class="calcolatrice-display"
+      aria-label="Schermo calcolatrice"
+      readonly
+    />
+
+    <div class="calcolatrice-tasti">
+      <button class="calcolatrice-tasto calcolatrice-tasto-cancella" onclick="cancellaTutto()" aria-label="Cancella tutto">C</button>
+      <button class="calcolatrice-tasto" onclick="backspace()" aria-label="Backspace">⌫</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-speciale" onclick="inserisci('%')" aria-label="Percentuale">%</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-operatore" onclick="inserisci('/')" aria-label="Dividi">÷</button>
+
+      <button class="calcolatrice-tasto" onclick="inserisci('7')">7</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('8')">8</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('9')">9</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-operatore" onclick="inserisci('*')" aria-label="Moltiplica">×</button>
+
+      <button class="calcolatrice-tasto" onclick="inserisci('4')">4</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('5')">5</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('6')">6</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-operatore" onclick="inserisci('-')" aria-label="Sottrai">−</button>
+
+      <button class="calcolatrice-tasto" onclick="inserisci('1')">1</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('2')">2</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('3')">3</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-operatore" onclick="inserisci('+')" aria-label="Somma">+</button>
+
+      <button class="calcolatrice-tasto calcolatrice-tasto-zero" onclick="inserisci('0')" aria-label="Zero">0</button>
+      <button class="calcolatrice-tasto" onclick="inserisci('.')">.</button>
+      <button class="calcolatrice-tasto calcolatrice-tasto-uguale" onclick="calcola()" aria-label="Uguale">=</button>
+
+      <button class="calcolatrice-tasto" onclick="inserisci('(')" aria-label="Parentesi aperta">(</button>
+      <button class="calcolatrice-tasto" onclick="inserisci(')')" aria-label="Parentesi chiusa">)</button>
+    </div>
+  </div>
+</body>
+</html>

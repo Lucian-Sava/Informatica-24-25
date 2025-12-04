@@ -1,0 +1,107 @@
+<!-- 1>
+    1) creaiamo una text area dove inseriamo un messaggio
+    2) creaiamo una test area dove inseriamo il colore da attribuire al testo
+    3) creiamo una div (w: 400px, h: 300px, bordo 1px solid black)
+    4) creaiamo un pulsante che copi il messaggio scritto all'interno della div
+
+    5) creiamo un pulsante che schiacciandolo colora il testo nella div del colore inserito
+    6) creiamo un pulsante che schiacciandolo aumenta la width della div
+    7) creaiamo un pulsante che schiacciandolo diminuisce la width  della div
+--->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Lezione 23-10-25</title>
+        <script>
+            var dimCarattere=15;
+            var larghezza=400;
+            function scrivi()
+            {
+                var testo = document.getElementById("output").innerHTML = messaggio.value;
+                document.getElementById("output").innerHTML = testo;
+            }
+
+            function colorText()
+            {
+                var colore = document.getElementById("colore").value;
+                //var msg = document.getElementById("messaggio").innerHTML;
+                document.getElementById("output").style.color = colore;
+                //document.getElementById("output").innerHTML = msg;
+
+            }
+            
+            function CopiaText()
+            {
+                var messaggio = document.getElementById("messaggio").value;
+                document.getElementById("contenitore").innerHTML = messaggio;
+            }
+
+            function allargaCarattere()
+            {
+                dimCarattere++;
+                document.getElementById("output").style.fontSize = dimCarattere + "px";
+            }
+
+            function diminuisciCarattere()
+            {
+                dimCarattere--;
+                document.getElementById("output").style.fontSize = dimCarattere + "px";
+            }
+
+            function AllargaQuadrato()
+            {
+                larghezza += 50;
+                document.getElementById("output").style.width = larghezza + "px";
+            }
+
+            function RiduciQuadrato()
+            {
+                larghezza -= 50;
+                document.getElementById("output").style.width = larghezza + "px";
+            }
+
+        </script>
+        <style>
+            #output
+            {
+                width: 400px;
+                height: 300px;
+                border: 1px solid rgba(255, 0, 0, 0.541);
+                font-size: 15px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <form name="MODULI">
+            <label>lascia un commento: </label>
+            <input type="text" id="messaggio" name="messaggio" maxlength="200"></input>
+            </br></br></br>
+
+            <label>inserisci il colore del testo: </label>
+            </br></br><br>
+            <input type="text" id="colore" name="colore" maxlength="200"></input>
+            </br></br></br>
+            
+            <input type="button" value="Copia testo" onclick="scrivi();"></input>
+            </br></br></br>
+
+            <input type="button" value="Cambio colore" onclick="colorText();"></input>
+            </br></br></br>
+
+            <input type="button" value="Aumenta carattere" onclick="allargaCarattere();"></input>
+            </br></br></br>
+
+            <input type="button" value="Diminuisci carattere" onclick="diminuisciCarattere();"></input>
+            </br></br></br>
+            <div id="output"></div>
+
+            <input type="button" value="Aumento larghezza DIV" onclick="AllargaQuadrato();"></input>
+            </br></br></br>
+
+            <input type="button" value="Diminuisco larghezza DIV" onclick="RiduciQuadrato();"></input>
+            </br></br></br>
+
+        </form>
+    </body>
+</html>
