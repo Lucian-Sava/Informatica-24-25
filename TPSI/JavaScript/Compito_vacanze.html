@@ -1,0 +1,65 @@
+<!-- 
+ Inserire due numeri all'interno di due input type ed eseguirne la somma. Prevedere un ulteriore pulsante tale che a secondo 
+ che la somma risulta essere pari o dispari verrà colorato lo sfondo della div,
+ in cui visualizzeremo il risultato, in due colori diversi; in un alert invece verrà comunicato se il valore è pari o dispari. 
+-->
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>Somma di 2 NUM. Ver. Pari e dispari</title>
+        <script>
+            function sommanumeri()
+            {
+                num1 = parseInt(document.getElementById("num1").value);
+                num2 = parseInt(document.getElementById("num2").value);
+                somma = num1 + num2;
+            }
+
+            function verifica()
+            {
+                sommanumeri();
+                let risultatoDiv = document.getElementById("risultato");
+                if (somma % 2 === 0) 
+                {
+                    risultatoDiv.style.backgroundColor = "lightblue";
+                    alert("Il risultato è pari.");
+                } else {
+                    risultatoDiv.style.backgroundColor = "lightgreen";
+                    alert("Il risultato è dispari.");
+                }
+                risultatoDiv.innerHTML = "La somma è: " + somma;
+            }
+        </script>
+        <style>
+            h2 {
+                font-family: Arial, sans-serif;
+            }
+            botton {
+                font-size: 16px;
+                padding: 10px 20px;
+                margin-top: 10px;
+            }
+            #risultato {
+                font-size: 18px;
+                text-align: center;
+                line-height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>
+            Inserisci due numeri per calcolare la somma:
+            <br><br>
+            Numero 1: <input type="text" id="num1"><br><br>
+            Numero 2: <input type="text" id="num2"><br><br>
+        </h2>
+        <div>
+            <input type="button" value="Somma e verifica" onclick="verifica()">
+        </div>
+        <div>
+            <h3 id="risultato" style="width :200px; height:50px; border:1px solid black; margin-top:20px;">
+                Risultato apparirà qui
+            </h3>
+        </div> 
+    </body>
+ </html>

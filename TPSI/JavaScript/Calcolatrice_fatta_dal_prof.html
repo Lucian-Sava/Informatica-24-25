@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head><title>INDOVINA NUMERO</title>
+		<script>
+			let str="", str1="", op="";
+			
+			function tasto(v){
+				document.calc.display.value+=v;
+				str+=v;
+			}
+            function operat(p)
+            {
+                op = p;
+                document.calc.display.value="";
+                str1=eval(str);
+                str="";
+            }
+            function operaz()
+            {
+                switch(op)
+                {
+                    case "*":
+                        document.calc.dispaly.value= eval(str) * str1;
+                        break;
+                }
+            }
+            function uguale()
+            {
+                document.calc.display.value= eval(str);
+                str="";
+            }
+	
+		</script>
+	</head>
+	<body>
+		<table border=3>
+		<tr><td>
+			<form name="calc">
+			<br><br>CASIO<br><br>
+			<input type="text" name="display" value="" size="26"><br><br>
+			<table border=2>
+				<tr>
+					<input type="button" value="1" onclick="tasto(this.value);">
+					<input type="button" value="2" onclick="tasto(this.value)";>
+					<input type="button" value="*" onclick="operaz(this.value)";>
+				</tr>
+				<tr>
+					<input type="button" value="-" onclick="operat(this.value)";>
+				</tr>
+				<tr>
+					<input type="button" value="=" onclick="uguale(this.value)">
+				</tr>
+				<tr>
+					<input type="button" value="0" onclick="tasto(this.value);">
+					<input type="button" value="." onclick="tasto(this.value);">
+				</tr>
+			</table>
+			</form>
+		</td>
+		</tr>
+		</table>
+	
+	</body>
+</html>

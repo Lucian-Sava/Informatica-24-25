@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .box
+            {
+                width: 50px;
+                height: 50px;
+                background-color: blue;
+                position: relative;
+                left: 0;
+                transition: left 2s ease;
+            }
+        </style>
+        <script>
+            let soved = false;
+            function moveBox()
+            {
+                var box = document.getElementById("box");
+                if (!soved)
+                {
+                    box.style.left = "300px";
+                }
+                else
+                {
+                    box.style.left = "0px";
+                }
+                soved = !soved;
+            }  
+        </script>
+    </head>
+    <body>
+        <div class="box" id="box"></div>
+        <button onclick="moveBox();"> MUOVI</button>
+    </body>
+</html>

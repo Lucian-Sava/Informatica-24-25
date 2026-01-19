@@ -1,0 +1,130 @@
+<!--
+    Creazione della pagina html per la simulazione di una verifica
+    Scriviamo i passaggi principali del codice HTML
+    1) Inserimenti di input : nome e cognome
+    2) Inserimento della data di nascita e paese di residenza
+    3) Bottone per inviare Il fedback
+    4) fare uno stile per rendere la pagina bella
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulazione Verifica 11/12/2025</title>
+    <meta charset="UTF-8">
+
+    <script>
+        //Uttilizzo di JavaScript per l'invio del form
+        document.addEventListener("DOMContentLoaded", function()
+        {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event)
+            {
+                event.preventDefault(); // impedisce l'invio predefinito del form
+                alert("Grazie per aver inviato il feedback!");
+                form.reset(); //reimposta il form
+                
+            });
+
+            // Validazione semplice del form
+            form.addEventListener("input", function(event)
+            {
+                const target = event.target;
+                if (target.value.trim() === "") {
+                    target.setCustomValidity("Questo campo è obbligatorio.");
+                } else {
+                    target.setCustomValidity("");
+                }
+            }
+            );
+        }
+        );
+        document.addEventListener("DOMContentLoaded", function()
+        {
+            const form = document.querySelectorAll("form")[1];
+            form.addEventListener("submit", function(event)
+            {
+                event.preventDefault(); // impedisce l'invio predefinito del form
+
+                const nome = document.getElementById("Nome").value;
+                const cognome = document.getElementById("Cognome").value;
+                const dataNascita = document.getElementById("DataNascita").value;
+                const paeseResidenza = document.getElementById("PaeseResidenza").value;
+
+                const datiUtenteDiv = document.getElementById("DatiUtente");
+                datiUtenteDiv.innerHTML = `
+                    <p>Nome: ${nome}</p>
+                    <p>Cognome: ${cognome}</p>
+                    <p>Data di Nascita: ${dataNascita}</p>
+                    <p>Paese di Residenza: ${paeseResidenza}</p>
+                `;
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>SIMULAZIONE VERIFICA</h1>
+    <form>
+        <label for="Nome"> NOME </label>
+        <input type="text" id="Nome" name="nome" required> <br><br>
+
+        <label for="Cognome"> COGNOME </label>
+        <input type="text" id="Cognome" name="cognome" required> <br><br>
+
+        <label for="DataNascita"> DATA DI NASCITA </label>
+        <input type="date" id="DataNascita" name="dataNascita" required> <br><br>
+
+        <label for="PaeseResidenza"> PAESE DI RESIDENZA </label>
+        <input type="text" id="PaeseResidenza" name="paeseResidenza" required> <br><br>
+
+        <input type="submit" value="INVIA FEEDBACK">
+    </form>
+    <form>
+        // Spazio in cui ci sono i dati chwe l'utente ha Inserimeto.
+        <label for="DatiUtente"> I DATI INSERITI SONO: </label>
+        <div id="DatiUtente">
+            <!-- I dati inseriti dall'utente verranno visualizzati qui -->
+        </div>
+    </form>
+
+</body>
+</html>
