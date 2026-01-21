@@ -1,0 +1,43 @@
+<!-- CREAZIONE DI UN ESERCIZIO DI RIPASSO JavaScript CHE ABBIAMO FATTO NEL 2025 -->
+<!-- ESERCIZIO : Pallina che si muove e cambia colore -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animazione Pallina</title>
+    <style>
+        #ball {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+    <script>
+        let moved = false;
+        function startAnimation() 
+        {
+            const ball = document.getElementById("ball");
+
+            if (!moved) {
+                ball.style.transition = "left 2s ease, background-color 3s ease";
+                ball.style.left = "300px";
+                ball.style.backgroundColor = "red";
+            } 
+            else 
+            {
+                ball.style.transition = "left 2s ease, background-color 3s ease";
+                ball.style.left = "0px";
+                ball.style.backgroundColor = "blue";
+            }
+            moved = !moved;
+        }
+    </script>
+</head>
+<body>
+    <div id="ball"></div>
+    <button onclick="startAnimation()">MUOVI</button>
+</body>
+</html>
