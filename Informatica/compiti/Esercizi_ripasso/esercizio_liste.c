@@ -8,7 +8,7 @@ typedef struct
     struct Nodo* next;
 }Nodo;
 
-typedef Nodo* Lista; // Definizione del tipo Lista come puntatore a Nodo
+typedef Nodo* Lista; // Definizione del tipo Lista come puntatore a Nodo   ( Nodo --> struct Nodo )
 
 Lista inserisciTesta(Lista testa, int valore) 
 {
