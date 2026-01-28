@@ -4,8 +4,9 @@ Perché usare una struct? Serve per raggruppare variabili di tipo diverso che si
 L'alternativa (perché è un problema?): L'alternativa sarebbe usare array separati (es. un array per i nomi, uno per i prezzi). Il problema è che è difficile mantenere i dati sincronizzati: se ordini l'array dei nomi, i prezzi non si spostano da soli e i dati si "mischiano".
 
 Dichiarazione statica vs dinamica:
-    Statica: “Auto concessionaria[100];” (Dimensione fissa all'inizio).
-    Dinamica: Si usa la “malloc” per allocare memoria solo quando serve (come nelle liste).
+
+-) Statica: “Auto concessionaria[100];” (Dimensione fissa all'inizio).
+-) Dinamica: Si usa la “malloc” per allocare memoria solo quando serve (come nelle liste).
 # 2. Integrazioni sulle LISTE
 Come "Liberare" la memoria
 Quando hai finito di usare una lista, devi liberare la memoria di ogni singolo nodo, altrimenti causi un "memory leak".
