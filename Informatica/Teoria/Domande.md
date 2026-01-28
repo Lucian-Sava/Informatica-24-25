@@ -6,6 +6,7 @@ L'alternativa (perché è un problema?): L'alternativa sarebbe usare array separ
 Dichiarazione statica vs dinamica:
 
 -) Statica: “Auto concessionaria[100];” (Dimensione fissa all'inizio).
+
 -) Dinamica: Si usa la “malloc” per allocare memoria solo quando serve (come nelle liste).
 # 2. Integrazioni sulle LISTE
 Come "Liberare" la memoria
