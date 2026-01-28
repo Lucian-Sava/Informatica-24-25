@@ -1,11 +1,11 @@
 # 1. Integrazioni sulle STRUCT
-    • Perché usare una struct? Serve per raggruppare variabili di tipo diverso che si riferiscono allo stesso oggetto reale (es. un contatto o un'auto).
+     Perché usare una struct? Serve per raggruppare variabili di tipo diverso che si riferiscono allo stesso oggetto reale (es. un contatto o un'auto).
 
-    • L'alternativa (perché è un problema?): L'alternativa sarebbe usare array separati (es. un array per i nomi, uno per i prezzi). Il problema è che è difficile mantenere i dati sincronizzati: se ordini l'array dei nomi, i prezzi non si spostano da soli e i dati si "mischiano".
+     L'alternativa (perché è un problema?): L'alternativa sarebbe usare array separati (es. un array per i nomi, uno per i prezzi). Il problema è che è difficile mantenere i dati sincronizzati: se ordini l'array dei nomi, i prezzi non si spostano da soli e i dati si "mischiano".
 
-    • Dichiarazione statica vs dinamica:
-        ◦ Statica: “Auto concessionaria[100];” (Dimensione fissa all'inizio).
-        ◦ Dinamica: Si usa la “malloc” per allocare memoria solo quando serve (come nelle liste).
+     Dichiarazione statica vs dinamica:
+         Statica: “Auto concessionaria[100];” (Dimensione fissa all'inizio).
+         Dinamica: Si usa la “malloc” per allocare memoria solo quando serve (come nelle liste).
 # 2. Integrazioni sulle LISTE
 Come "Liberare" la memoria
 Quando hai finito di usare una lista, devi liberare la memoria di ogni singolo nodo, altrimenti causi un "memory leak".
@@ -41,8 +41,8 @@ Lista inserisciCoda(Lista testa, int valore)
 }
 ```
 La Lista Circolare
-    • Cos'è? È una lista dove l'ultimo nodo, invece di puntare a NULL, punta di nuovo al primo nodo (Testa).
-    • Vantaggio: Puoi girare all'infinito nella lista senza fermarti mai.
+     Cos'è? È una lista dove l'ultimo nodo, invece di puntare a NULL, punta di nuovo al primo nodo (Testa).
+     Vantaggio: Puoi girare all'infinito nella lista senza fermarti mai.
 
 # 7. Cancellazione di un Nodo
 Per eliminare un nodo, devi sempre usare la funzione free(), altrimenti la memoria rimane occupata inutilmente.
@@ -86,17 +86,20 @@ Lista eliminaCoda(Lista testa)
 ```
 
 # 8. Focus Nodi Circolari
-    • Definizione: In una lista circolare, l'ultimo nodo non punta a NULL, ma punta alla testa.
-    • Cancellazione in testa su lista circolare: È difficile perché se elimini la testa, devi anche aggiornare l'ultimo nodo della lista affinché punti alla nuova testa. Se non lo fai, il cerchio si rompe.
-    • Inserimento in fondo: Devi scorrere la lista finché non trovi il nodo che punta alla testa, e far puntare quel nodo al nuovo elemento (che a sua volta punterà alla testa).
+Definizione: In una lista circolare, l'ultimo nodo non punta a NULL, ma punta alla testa.
+
+Cancellazione in testa su lista circolare: È difficile perché se elimini la testa, devi anche aggiornare l'ultimo nodo della lista affinché punti alla nuova testa. Se non lo fai, il cerchio si rompe.
+
+Inserimento in fondo: Devi scorrere la lista finché non trovi il nodo che punta alla testa, e far puntare quel nodo al nuovo elemento (che a sua volta punterà alla testa).
 
 # 9. Cose "Necessarie"
-    1. "Cosa succede se..." (Domanda 13 ): Se perdi il puntatore alla testa, perdi l'intera lista. La memoria resta occupata (leak) ma non è più raggiungibile.
+1. "Cosa succede se...": Se perdi il puntatore alla testa, perdi l'intera lista. La memoria resta occupata (leak) ma non è più raggiungibile.
 
-    2. Variabili Formali (Domanda 8): Quando definisci una lista, i parametri che passi alle funzioni (es: Lista testa) sono variabili formali. Se vuoi modificare la lista originale nel main, devi restituire la nuova testa con return o usare i puntatori a puntatore.
-    3. Memoria Dinamica vs Statica (Domanda 4 ):
-        ◦ Statica: Array di struct (dimensione decisa alla compilazione).
-        ◦ Dinamica: Lista (dimensione decisa durante l'esecuzione con malloc).
+2. Variabili Formali: Quando definisci una lista, i parametri che passi alle funzioni (es: Lista testa) sono variabili formali. Se vuoi modificare la lista originale nel main, devi restituire la nuova testa con return o usare i puntatori a puntatore.
+
+3. Memoria Dinamica vs Statica:
+    Statica: Array di struct (dimensione decisa alla compilazione).
+    Dinamica: Lista (dimensione decisa durante l'esecuzione con malloc).
 
 Domanda tosta: Perché è conveniente una lista rispetto a una struct/array? 
 Ris.) Perché la lista permette di aggiungere o togliere elementi senza conoscere prima il numero totale e senza dover spostare tutti gli altri dati in memoria, risparmiando tempo computazionale.	
