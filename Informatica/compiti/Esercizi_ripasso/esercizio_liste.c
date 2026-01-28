@@ -31,6 +31,8 @@ void stampaLista(Lista testa)
 
 int main() {
     Lista testa = NULL; // Lista inizialmente vuota
+
+    //RICORDA: di inserire gli elementi in TESTA uno alla volta, non "LISTA", perchè la funzione restituisce la nuova testa della lista
     
     testa = inserisciTesta(testa, 10);  // Inserisco elementi in testa
     testa = inserisciTesta(testa, 20);  // Inserisco un altro elemento2 in testa
