@@ -48,6 +48,7 @@ Esempio:
 
 ## Input (Lettura da tastiera)
 Attenzione alla & (e commerciale).
+
 -) Per i numeri (int, float) CI VUOLE la &.
 -) Per le stringhe (char[]) NON ci vuole la & (perché il nome dell'array è già un indirizzo).
 
