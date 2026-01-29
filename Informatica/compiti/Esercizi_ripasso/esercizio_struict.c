@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
+typedef struct { // Definizione della struct Auto
     char marca[30];
     char modello[30];
     float prezzo;
@@ -61,8 +61,8 @@ int main() {
             METODO 3 : uso il confronto di stringhe con minore o amggiore del prezzo
                 if(concessionaria[i].prezzo <= Maprezzo) 
                 {
-                    Maprezzo = concessionaria[i].prezzo;
-                    Posizione = i;
+                    Maprezzo = concessionaria[i].prezzo; // Aggiorno il valore del prezzo minore
+                    Posizione = i; // Aggiorno la posizione dell'auto piu economica
                     printf("L'auto affidabile è: %s %s - Euro: €%.2f\n", 
                     concessionaria[Posizione].marca, 
                     concessionaria[Posizione].modello, 
