@@ -47,11 +47,11 @@ Libro* InserisciLibro(Libro* L, int* n)
     }
 
     printf("Inserisci il titolo del libro\n");
-    fgets(L[*n].titolo, 100, stdin);
+    fgets(L[*n].titolo, 20, stdin);
     L[*n].titolo[strcspn (L[*n].titolo, "\n")] = '\0';
 
     printf("Inserisci l'Autore :");
-    fgets(L[*n].autore, 100, stdin);
+    fgets(L[*n].autore, 20, stdin);
     L[*n].autore[strcspn (L[*n].autore, "\n")] = '\0';
 
     printf("Inserisci isbn :");
@@ -60,9 +60,9 @@ Libro* InserisciLibro(Libro* L, int* n)
     printf("Inserisci le copie totali :");
     scanf("%d", &L[*n].copie_totali);
 
-    L[*n].copie_disponibili.giorno = 0;
-    L[*n].copie_disponibili.mese = 0;
-    L[*n].copie_disponibili.anno = 0;
+    L[*n].data_prestito.giorno = 0;
+    L[*n].data_prestito.mese = 0;
+    L[*n].data_prestito.anno = 0;
     L[*n].data_restituzione.giorno = 0;
     L[*n].data_restituzione.mese = 0;
     L[*n].data_restituzione.anno = 0;
@@ -74,7 +74,7 @@ void stampa(Libro* L, int n)
     {
         printf("\nTitolo : %s", L[i].titolo);
         printf("\nAutore: %s", L[i].autore);
-        printf("\nISBN: %d", L[*n].isbn);
+        printf("\nISBN: %d", L[i].isbn);
         printf("\nCopi disponibili: %d", L[i].copie_totali);
         printf("\nCopie disponibili: %d", L[i].copie_disponibili);
         printf("\nData prestito: %d", L[i].data_prestito.giorno);
@@ -131,6 +131,19 @@ void visualizzaLibriPrestito(Libro* L, int n)
     }
 }
 
+void visualizzaPrestitoScaduto(Libro* L, int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        int gg_trascorsi = 30*(L[i].data_restituzione.mese - L[i].data_prestito.mese) + L[i].data_restituzione.giorno + (30 - L[i].data_prestito.giorno);
+        if(gg_trascorsi > 40)
+        {
+            printf("\nTitolo : %s", L[i].titolo);
+            printf("\nAutore : %s", L[i].autore);
+        }
+    }
+}
+
 int main()
 {
     Libro* biblioteca = NULL;
@@ -138,7 +151,7 @@ int main()
     char c;
 
     do{
-        printf("-----MANU-----");
+        printf("-----MANU-----\n");
         printf("1. Inserisci nuovo libro\n");
         printf("2. Visualizza tutti i libri\n");
         printf("3. Registra prestito\n");
@@ -173,6 +186,11 @@ int main()
             case 5 :
             {
                 visualizzaLibriPrestito(biblioteca, n);
+                break;
+            }
+            case 6 :
+            {
+                visualizzaPrestitoScaduto(biblioteca, n);
                 break;
             }
         }
