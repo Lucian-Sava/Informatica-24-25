@@ -159,6 +159,8 @@ int main()
         printf("5. Visualizza libri in prestito\n");
         printf("6. Stampare il libro con il prestito scaduto\n");
         printf("0. Esci\n");
+        printf("Inserisci la tua Scelta Soldato:");
+        scanf("%d", &scelta);
         while((c = getchar()) != '\n') {}
 
         switch(scelta)
