@@ -60,31 +60,37 @@ Libro* InserisciLibro(Libro* L, int* n)
     printf("Inserisci le copie totali :");
     scanf("%d", &L[*n].copie_totali);
 
+    L[*n].copie_disponibili= L[*n].copie_totali;
     L[*n].data_prestito.giorno = 0;
-    L[*n].data_prestito.mese = 0;
-    L[*n].data_prestito.anno = 0;
-    L[*n].data_restituzione.giorno = 0;
-    L[*n].data_restituzione.mese = 0;
-    L[*n].data_restituzione.anno = 0;
+	L[*n].data_prestito.mese = 0;
+	L[*n].data_prestito.anno = 0;
+	L[*n].data_restituzione.giorno = 0;
+	L[*n].data_restituzione.anno = 0;
+	L[*n].data_restituzione.mese = 0;
+	(*n)++;
+
+    return L;
 }
 
-void stampa(Libro* L, int n)
+void stampa(Libro *L, int n)
 {
     for(int i = 0; i < n; i++)
     {
-        printf("\nTitolo : %s", L[i].titolo);
-        printf("\nAutore: %s", L[i].autore);
-        printf("\nISBN: %d", L[i].isbn);
-        printf("\nCopi disponibili: %d", L[i].copie_totali);
-        printf("\nCopie disponibili: %d", L[i].copie_disponibili);
-        printf("\nData prestito: %d", L[i].data_prestito.giorno);
-        printf("\n restituzione: %d", L[i].data_restituzione.giorno);
+        printf("\n----------------------------");
+        printf("\nTitolo : %s\n", L[i].titolo);
+        printf("\nAutore: %s\n", L[i].autore);
+        printf("\nISBN: %d\n", L[i].isbn);
+        printf("\nCopie tot disponibili: %d\n", L[i].copie_totali);
+        printf("\nCopie disponibili: %d\n", L[i].copie_disponibili);
+        printf("\nData prestito: %d %d %d\n", L[i].data_prestito.giorno, L[i].data_prestito.mese, L[i].data_prestito.anno);
+        printf("\n restituzione: %d %d %d\n", L[i].data_restituzione.giorno, L[i].data_restituzione.mese, L[i].data_restituzione.anno);
+        printf("\n");
     }
 }
 
 void registraLibro(Libro* L, int n)
 {
-    int isbn, trovato;
+    int isbn, trovato = 0;
 
     printf("Inserisci l'ISBN del libro :");
     scanf("%d", &isbn);
@@ -98,24 +104,40 @@ void registraLibro(Libro* L, int n)
                 trovato = 1;
                 L[i].copie_disponibili -= 1;
 
-                printf("\nInserisci il giorno della data prestito: ");
+                printf("\nInserisci il giorno della data prestito: \n");
                 scanf("%d", &L[i].data_prestito.giorno);
-                printf("\nInserisci il mese della data prestito: ");
+                printf("\nInserisci il mese della data prestito: \n");
                 scanf("%d", &L[i].data_prestito.mese);
-                printf("\nInserisci il anno della data prestito: ");
+                printf("\nInserisci il anno della data prestito: \n");
                 scanf("%d", &L[i].data_prestito.anno);
-                printf("\nInserisci il giorno della data di restituzione: ");
+                printf("\nInserisci il giorno della data di restituzione: \n");
                 scanf("%d", &L[i].data_restituzione.giorno);
-                printf("\nInserisci il mese della data di restituzione: ");
+                printf("\nInserisci il mese della data di restituzione: \n");
                 scanf("%d", &L[i].data_restituzione.mese);
-                printf("\nInserisci il anno della data di restituzione: ");
+                printf("\nInserisci il anno della data di restituzione: \n");
                 scanf("%d", &L[i].data_restituzione.anno);
             }
             else
             {
-                printf("Copie non disponibili");
+                printf("Copie non disponibili\n");
             }
 
+        }
+    }
+}
+
+void CercaISBN(Libro* L, int n)
+{
+    int cerca;
+    printf("In serisci l'ISBN : \n");
+    scanf("%d", &cerca);
+    for(int i = 0; i < n; i++)
+    {
+        if(cerca == L[i].isbn)
+        {
+            printf("\nTitolo : %s\n", L[i].titolo);
+            printf("\nAutore: %s\n", L[i].autore);
+            printf("\nISBN: %d\n", L[i].isbn);
         }
     }
 }
@@ -126,7 +148,7 @@ void visualizzaLibriPrestito(Libro* L, int n)
     {
         if(L[i].copie_disponibili < L[i].copie_totali)
         {
-            printf("il libro in prestito è: %s", L[i].titolo);
+            printf("il libro in prestito è: %s\n", L[i].titolo);
         }
     }
 }
@@ -135,11 +157,16 @@ void visualizzaPrestitoScaduto(Libro* L, int n)
 {
     for(int i = 0; i < n; i++)
     {
-        int gg_trascorsi = 30*(L[i].data_restituzione.mese - L[i].data_prestito.mese) + L[i].data_restituzione.giorno + (30 - L[i].data_prestito.giorno);
-        if(gg_trascorsi > 40)
+        if(L[i].data_restituzione.giorno || L[i].data_restituzione.mese || L[i].data_restituzione.anno <= L[i].data_prestito.giorno || L[i].data_prestito.mese || L[i].data_prestito.anno)
         {
-            printf("\nTitolo : %s", L[i].titolo);
-            printf("\nAutore : %s", L[i].autore);
+            printf("Il libro scaduto e l'autalmente questo: \n");
+            printf("\nTitolo: %s\n", L[i].titolo);
+            printf("\nAutore: %s\n", L[i].autore);
+            printf("\nData restituzione:  %d/%d/%d\n", L[i].data_restituzione.giorno,L[i].data_restituzione.mese,L[i].data_restituzione.anno);
+        }
+        else
+        {
+            printf("non ci sono libri scaduti\n");
         }
     }
 }
@@ -151,7 +178,7 @@ int main()
     char c;
 
     do{
-        printf("-----MANU-----\n");
+        printf("-----MENU-----\n");
         printf("1. Inserisci nuovo libro\n");
         printf("2. Visualizza tutti i libri\n");
         printf("3. Registra prestito\n");
@@ -165,35 +192,44 @@ int main()
 
         switch(scelta)
         {
-            case 0 :
+            case 0:
             {
                 printf("esci dal programma");
                 break;
             }
-            case 1 :
+            case 1:
             {
                 biblioteca = InserisciLibro(biblioteca, &n);   // quindi n è una Dimensione
                 break;
             }
-            case 2 :
+            case 2:
             {
                 stampa(biblioteca, n);
                 break;
             }
-            case 3 :
+            case 3:
             {
                 registraLibro(biblioteca, n);
                 break;
             }
-            case 5 :
+            case 4:
+            {
+                CercaISBN(biblioteca, n);
+                break;
+            }
+            case 5:
             {
                 visualizzaLibriPrestito(biblioteca, n);
                 break;
             }
-            case 6 :
+            case 6:
             {
                 visualizzaPrestitoScaduto(biblioteca, n);
                 break;
+            }
+            default:
+            {
+                printf("\nScelta non valida!");
             }
         }
     }while(scelta!=0);
