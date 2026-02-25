@@ -60,7 +60,7 @@ Libro* InserisciLibro(Libro* L, int* n)
     printf("Inserisci le copie totali :");
     scanf("%d", &L[*n].copie_totali);
 
-    L[*n].copie_disponibili= L[*n].copie_totali;
+    L[*n].copie_disponibili = L[*n].copie_totali;
     L[*n].data_prestito.giorno = 0;
 	L[*n].data_prestito.mese = 0;
 	L[*n].data_prestito.anno = 0;
